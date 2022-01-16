@@ -9,6 +9,8 @@ let flipYBtn = document.getElementById("flip-y");
 
 let uploadButton = document.getElementById("upload-button");
 let image = document.getElementById("chosen-image");
+let download = document.querySelector(".download-button");
+download.setAttribute("hidden","true");
 
 function resetFilter(){
     filterA.value = "0";
@@ -27,6 +29,8 @@ uploadButton.onchange = () => {
     reader.readAsDataURL(uploadButton.files[0]);
     reader.onload = () => {
         image.setAttribute("src", reader.result);
+        download.removeAttribute("hidden","true");
+
     }
 }
 
@@ -37,7 +41,6 @@ sliders.forEach( slider => {
 
 function addFilter(){
     image.style.filter = `blur(${filterA.value}px) contrast(${filterB.value}%) hue-rotate(${filterC.value}deg) sepia(${filterD.value}%)`;
-    console.log(image.style.filter)
 }
 
 let radioBtns = document.querySelectorAll(".flip-option input[type='radio']");
@@ -56,3 +59,9 @@ function flipImage(){
         image.style.transform = "scale(1,1)";
     }
 }
+
+download.addEventListener("click",()=>{
+    alert("No supe hacer la funcion descarga :c tirale capture :)");
+    download.removeAttribute("hidden","false");
+    download.setAttribute("hidden","true");
+})
